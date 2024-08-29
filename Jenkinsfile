@@ -50,18 +50,6 @@ pipeline {
                 sh "trivy fs . > trivyfs.txt"
             }
         }
-    }
-    post {
-        always {
-            emailext(
-                to: 'jasonsanjayy21@gmail.com',
-                subject: "Build ${currentBuild.fullDisplayName}",
-                body: "Build result: ${currentBuild.currentResult}\n\nCheck console output at ${env.BUILD_URL} to view the results.",
-                attachLog: true
-            )
-        }
-        cleanup {
-            cleanWs()
-        }
-    }
+   
+}
 }
